@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.Creator">
+   <children>
+      <Label layoutX="337.0" layoutY="56.0" text="Creator" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" layoutX="570.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="image3" fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="678.0" layoutY="525.0" mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: #000000;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="260.0" layoutY="137.0" prefHeight="61.0" prefWidth="434.0" text="Name : Kantapat Radchawatr (Ice)" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="182.0" prefHeight="61.0" prefWidth="480.0" text="ID : 6310450433 Github : icekantapat138" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="281.0" prefHeight="61.0" prefWidth="510.0" text="Name : Titaporn Techawathanakanok(Mew)" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="326.0" prefHeight="61.0" prefWidth="480.0" text="ID : 6310451081 Github : titaporn1081" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="246.0" layoutY="453.0" prefHeight="61.0" prefWidth="388.0" text="Phakaporn Srisukha" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="246.0" layoutY="495.0" prefHeight="61.0" prefWidth="394.0" text="ID : 6310451324Github : phakaporn2544" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

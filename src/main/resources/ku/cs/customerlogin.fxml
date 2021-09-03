@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.customer.CustomerLogin">
+   <children>
+      <Label layoutX="240.0" layoutY="58.0" text="Customer Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="170.0" layoutY="179.0" text="Username :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="170.0" layoutY="243.0" text="Password :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameText" layoutX="347.0" layoutY="179.0" promptText="username">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="passwordField" layoutX="347.0" layoutY="243.0" promptText="password">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </PasswordField>
+      <Button layoutX="197.0" layoutY="375.0" mnemonicParsing="false" onAction="#loginBtn" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: #000000;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="435.0" layoutY="375.0" mnemonicParsing="false" onAction="#createBtn" style="-fx-background-color: #000000;" text="Create Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

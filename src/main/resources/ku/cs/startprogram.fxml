@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="802.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StartProgram">
+    <children>
+        <Hyperlink layoutX="758.0" layoutY="14.0" onAction="#exitProgram" text="❌" textFill="RED">
+            <font>
+                <Font name="Yu Gothic Medium" size="18.0" />
+            </font>
+        </Hyperlink>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc91f" height="617.0" stroke="TRANSPARENT" strokeType="INSIDE" width="302.0" />
+        <ImageView fx:id="image1" fitHeight="186.0" fitWidth="234.0" layoutX="31.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="452.0" layoutY="211.0" mnemonicParsing="false" onAction="#adminBtn" style="-fx-background-color: #000000;" text="Administrator" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font>
+      </Button>
+      <Button layoutX="476.0" layoutY="349.0" mnemonicParsing="false" onAction="#customerBtn" style="-fx-background-color: #000000;" text="Customer" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font>
+      </Button>
+      <Hyperlink layoutX="110.0" layoutY="551.0" onAction="#creatorBtn" text="Creator" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Hyperlink>
+    </children>
+</AnchorPane>
