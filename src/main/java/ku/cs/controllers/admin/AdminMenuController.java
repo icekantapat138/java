@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class AdminController {
+public class AdminMenuController {
 
     @FXML
     void customerlistBtn(ActionEvent event) throws IOException {

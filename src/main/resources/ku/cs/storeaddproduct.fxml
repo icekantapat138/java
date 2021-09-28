@@ -5,39 +5,40 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.customer.StoreAddProduct">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.customer.StoreAddProductController">
    <children>
       <Label layoutX="333.0" layoutY="36.0" text="Product" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <ListView fx:id="listview" layoutX="46.0" layoutY="170.0" onMouseClicked="#productlistClick" prefHeight="310.0" prefWidth="240.0" />
+      <ListView fx:id="productListview" layoutX="46.0" layoutY="170.0" prefHeight="310.0" prefWidth="240.0" />
       <Label layoutX="85.0" layoutY="116.0" text="Product List" textFill="#ebebeb">
          <font>
             <Font name="System Bold Italic" size="29.0" />
          </font>
       </Label>
       <Separator layoutX="330.0" layoutY="160.0" orientation="VERTICAL" prefHeight="384.0" prefWidth="2.0" />
-      <Label layoutX="467.0" layoutY="116.0" text="Product Info" textFill="#ebebeb">
+      <Label layoutX="550.0" layoutY="56.0" text="Product Info" textFill="#ebebeb">
          <font>
             <Font name="System Bold Italic" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="204.0" text="Product :" textFill="WHITE">
+      <Label layoutX="376.0" layoutY="307.0" text="Product :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="256.0" text="Describe :" textFill="WHITE">
+      <Label layoutX="376.0" layoutY="359.0" text="Describe :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="373.0" layoutY="361.0" text="Price :" textFill="WHITE">
+      <Label layoutX="377.0" layoutY="464.0" text="Price :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -47,50 +48,81 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="addBtn" layoutX="410.0" layoutY="428.0" mnemonicParsing="false" onAction="#addBtn" style="-fx-background-color: #000000;" text="Add" textFill="WHITE">
+      <Button fx:id="addBtn" layoutX="418.0" layoutY="524.0" mnemonicParsing="false" onAction="#addBtn" style="-fx-background-color: #000000;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="478.0" layoutY="428.0" mnemonicParsing="false" onAction="#updateBtn" style="-fx-background-color: #000000;" text="Update" textFill="WHITE">
+      <Button layoutX="486.0" layoutY="524.0" mnemonicParsing="false" onAction="#updateBtn" style="-fx-background-color: #000000;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="577.0" layoutY="428.0" mnemonicParsing="false" onAction="#deleteBtn" style="-fx-background-color: #000000;" text="Delete" textFill="WHITE">
+      <Button layoutX="585.0" layoutY="524.0" mnemonicParsing="false" onAction="#deleteBtn" style="-fx-background-color: #000000;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="587.0" layoutY="361.0" text="Bahts." textFill="WHITE">
+      <Label layoutX="591.0" layoutY="464.0" text="Bahts." textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="376.0" layoutY="308.0" text="Count :" textFill="WHITE">
+      <Label layoutX="380.0" layoutY="411.0" text="Count :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="productText" layoutX="499.0" layoutY="204.0" prefHeight="25.0" prefWidth="219.0">
+      <Label layoutX="386.0" layoutY="201.0" text="Image :" textFill="WHITE">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="imageTxt" layoutX="477.0" layoutY="205.0" promptText="image product">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="describeText" layoutX="499.0" layoutY="256.0" prefHeight="25.0" prefWidth="219.0">
+      <TextField fx:id="nameTxt" layoutX="482.0" layoutY="305.0" promptText="product name">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="countText" layoutX="499.0" layoutY="308.0" prefHeight="35.0" prefWidth="99.0">
+      <TextField fx:id="describeTxt" layoutX="491.0" layoutY="356.0" promptText="describe product">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="priceText" layoutX="450.0" layoutY="361.0" prefHeight="35.0" prefWidth="127.0">
+      <TextField fx:id="countTxt" layoutX="471.0" layoutY="409.0" promptText="count product">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </TextField>
+      <TextField fx:id="priceTxt" layoutX="459.0" layoutY="462.0" prefHeight="39.0" prefWidth="112.0" promptText="price product">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="clearBtn" layoutX="670.0" layoutY="525.0" mnemonicParsing="false" onAction="#clearBtn" style="-fx-background-color: #000000;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="472.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="broseImgBtn" layoutX="688.0" layoutY="199.0" mnemonicParsing="false" onAction="#broseImgBtn" style="-fx-background-color: #000000;" text="Browse" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="85.0" layoutY="498.0" mnemonicParsing="false" onAction="#priceSort" style="-fx-background-color: #000000;" text="Price" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="146.0" layoutY="498.0" mnemonicParsing="false" onAction="#countSort" style="-fx-background-color: #000000;" text="Count" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -6,31 +6,25 @@ import java.io.IOException;
 
 public class Account {
     private String username, password;
-    private String x;
-
-
-    public Account() {
-        this.username =  "Admin";
-        this.password =  "Admin1234" ;
-    }
 
     public Account(String username, String password) {
         this.username =  username;
         this.password =  password;
     }
 
+    public Account() {
+    }
+
+    public void setPassword(String pw) {
+        this.password = pw;
+    }
 
     public boolean checkUser(String user) {
         return username.equals(user);
     }
 
-    public boolean checkPassword(String pw) {
+    public boolean checkPw(String pw) {
         return password.equals(pw);
-    }
-
-    public void setPassword(String pw) {
-        this.password = pw;
-
     }
 
     public String getUsername() {
@@ -40,7 +34,4 @@ public class Account {
     public String getPassword() {
         return password;
     }
-
-
-
 }

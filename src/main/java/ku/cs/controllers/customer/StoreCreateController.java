@@ -1,4 +1,4 @@
 package ku.cs.controllers.customer;
 
-public class Store {
+public class StoreCreateController {
 }

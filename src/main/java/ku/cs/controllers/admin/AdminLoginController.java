@@ -4,10 +4,7 @@ package ku.cs.controllers.admin;
 import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import ku.cs.model.User.Account;
 
 import java.io.BufferedReader;
@@ -15,10 +12,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class AdminLogin {
+public class AdminLoginController {
 
     @FXML private TextField usernameText;
     @FXML private PasswordField passwordField;
+    @FXML private CheckBox showpw;
 
     private Account admin;
 

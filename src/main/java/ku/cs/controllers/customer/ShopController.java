@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class Shop {
+public class ShopController {
 
     @FXML
     void logoutBtn(ActionEvent event) {

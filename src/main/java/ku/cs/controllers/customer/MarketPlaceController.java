@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class MarketPlace {
+public class MarketPlaceController {
 
     @FXML private Label productnameLabel;
     @FXML private Label dcproductLabel;

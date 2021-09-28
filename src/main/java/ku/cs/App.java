@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXRouter.bind(this, stage, "Start Program", 800, 600);
+        FXRouter.bind(this, stage, "Start Program");
         configRoute();
         FXRouter.goTo("customercontroller");
     }

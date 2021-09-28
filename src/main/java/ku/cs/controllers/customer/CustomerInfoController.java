@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class CustomerInfo {
+public class CustomerInfoController {
 
     @FXML private TextField fistnameText;
     @FXML private TextField lasnameText;

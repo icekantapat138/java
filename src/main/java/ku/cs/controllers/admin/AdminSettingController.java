@@ -4,11 +4,10 @@ import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import ku.cs.model.customer.CustomerList;
 
 import java.io.*;
 
-public class AdminSetting {
+public class AdminSettingController {
 
     @FXML private TextField userField;
     @FXML private PasswordField pwField;

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class CustomerController {
+public class CustomerMenuController {
 
     @FXML
     void storeBtn(ActionEvent event) throws IOException {
