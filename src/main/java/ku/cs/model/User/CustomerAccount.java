@@ -1,51 +1,50 @@
 package ku.cs.model.User;
 
+import ku.cs.service.account.CustomerDataSource;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.Collections;
 
-public class CustomerAccount extends Account {
+public class CustomerAccount {
 
-    private String firstname, lastname, retypepassword;
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private String repassword;
     private String image;
     private String status;
-    public String time;
-    private ArrayList<CustomerAccount>  customerAccounts;
+    private String date;
+    private String lowproduct;
 
-    public CustomerAccount() {
-        customerAccounts = new ArrayList<>();
-    }
 
-    public CustomerAccount(String username, String password, String firstname, String lastname, String retypepassword, String image, String status, String time) {
-        super(username, password);
+    public CustomerAccount(String username, String password, String firstname, String lastname, String repassword, String image, String status, String date, String lowproduct){
+        this.username = username;
+        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.retypepassword = retypepassword;
+        this.repassword = repassword;
         this.image = image;
         this.status = status;
-        this.time = time;
+        this.date = date;
+        this.lowproduct = lowproduct;
     }
 
-    public CustomerAccount(String username, String password) {
-        super(username, password);
+    public String getLowproduct() {
+        return lowproduct;
     }
 
-    public void setStatusHaveStore() {
-        this.status = "Have Store";
+    public void setLowproduct(String lowproduct) {
+        this.lowproduct = lowproduct;
     }
 
-    public void setStatusNotHaveStore() {
-        this.status = "Not Have Store";
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setDate() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd.MMM.yyyy kk:mm:ss");
-        String time = formatTime.format(currentTime);
-    }
-
-    public String getTime() {
-        return time;
+    public void setStatus(String status){
+        this.status = status;
     }
 
     public String getFirstname() {
@@ -56,29 +55,82 @@ public class CustomerAccount extends Account {
         return lastname;
     }
 
-    public void addCustomerAccount(CustomerAccount customerAccount) {
-        customerAccounts.add(customerAccount);
+    public String getRepassword() {
+        return repassword;
     }
 
-    public boolean searchUser(String user){
-        return customerAccounts.toString().contains(user);
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public boolean searchPw(String pw){
-        return customerAccounts.toString().contains(pw);
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public ArrayList<CustomerAccount> getCustomerAccounts() {
-        return customerAccounts;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setRepassword(String repassword) {
+        this.repassword = repassword;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("MM/dd/yyyy '@'hh:mm a");
+        this.date = formatTime.format(currentTime);
+    }
+
+    public boolean checkUser(String username){
+        return this.username.equals(username);
+    }
+
+    public boolean checkPw(String password){
+        return this.password.equals(password);
+    }
+
+    public boolean checkStatus(String status){
+        return this.status.equals(status);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String toCsv() {
+        return username + "," + password + "," + firstname +
+                          "," + lastname + "," + repassword +
+                          "," + image + "," + status +
+                          "," + date + "," + lowproduct;
     }
 
     public String toString() {
-        return "Customer" + "," +
-                firstname + "," +
-                lastname + "," +
-                getUsername() + "," +
-                getPassword() + "," +
-                retypepassword + "," +
-                image;
+        return firstname + "," + lastname + "," + username;
     }
+
+
 }

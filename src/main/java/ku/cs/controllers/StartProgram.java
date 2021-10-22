@@ -13,7 +13,7 @@ public class StartProgram {
     @FXML private ImageView image1;
 
     public void initialize() {
-        String img1 = getClass().getResource("/image/MIN.png").toExternalForm();
+        String img1 = getClass().getResource("/images/MIN.png").toExternalForm();
         image1.setImage(new Image(img1));
     }
 

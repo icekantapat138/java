@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.customer.CheckAddProduct">
+   <children>
+      <ImageView fx:id="pdImage" fitHeight="126.0" fitWidth="180.0" layoutX="210.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="195.0" layoutY="165.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Label text="ชื่อสินค้า :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="รายละเอียด :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="จำนวนสินค้า :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="ราคา ;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="305.0" layoutY="165.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Label fx:id="pdname" text="ชื่อสินค้า :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="pddetail" text="รายละเอียด :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="pdcount" text="จำนวนสินค้า :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="pdprice" text="ราคา ;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button layoutX="522.0" layoutY="353.0" mnemonicParsing="false" onAction="#confirmBtn" text="CONFIRM" />
+   </children>
+</AnchorPane>

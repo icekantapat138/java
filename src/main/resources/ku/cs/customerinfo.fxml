@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.customer.CustomerInfoController">
    <children>
@@ -75,5 +75,16 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Button>
+      <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="200.0" layoutX="140.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="442.0" layoutY="459.0" mnemonicParsing="false" onAction="#browseIBtn" style="-fx-background-color: #000000;" text="Browse Image" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="userImageTxt" layoutX="439.0" layoutY="413.0" prefHeight="25.0" prefWidth="219.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

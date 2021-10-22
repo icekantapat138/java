@@ -5,23 +5,19 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.admin.AdminLoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #EFE7E3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.admin.AdminLoginController">
    <children>
-      <Label layoutX="270.0" layoutY="64.0" text="Admin Login" textFill="WHITE">
+      <Label layoutX="190.0" layoutY="204.0" text="Username :" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="43.0" />
+            <Font name="Gadugi" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="170.0" layoutY="206.0" text="Username :" textFill="WHITE">
+      <Label layoutX="190.0" layoutY="268.0" text="Password :" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="28.0" />
-         </font>
-      </Label>
-      <Label layoutX="170.0" layoutY="270.0" text="Password :" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="Gadugi" size="28.0" />
          </font>
       </Label>
       <TextField fx:id="usernameText" layoutX="347.0" layoutY="206.0" promptText="username">
@@ -34,15 +30,21 @@
             <Font size="23.0" />
          </font>
       </PasswordField>
-      <Button layoutX="197.0" layoutY="402.0" mnemonicParsing="false" onAction="#loginBtn" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
+      <Button layoutX="197.0" layoutY="402.0" mnemonicParsing="false" onAction="#loginBtn" style="-fx-background-color: #000000;" text="เข้าสู่ระบบ" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Button>
-      <Button layoutX="321.0" layoutY="402.0" mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: #000000;" text="Back" textFill="WHITE">
+      <Button layoutX="330.0" layoutY="402.0" mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: #000000;" text="กลับ" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9b5353" height="64.0" layoutX="180.0" layoutY="46.0" stroke="#75434300" strokeType="INSIDE" width="442.0" />
+      <Label layoutX="301.0" layoutY="56.0" text="Admin login" textFill="WHITE">
+         <font>
+            <Font name="Palatino Linotype" size="35.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

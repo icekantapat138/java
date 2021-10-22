@@ -18,9 +18,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXRouter.bind(this, stage, "Start Program");
+        FXRouter.bind(this, stage, "MIN Shop");
         configRoute();
-        FXRouter.goTo("customercontroller");
+        FXRouter.goTo("startprogram");
     }
 
     private static void configRoute() {
@@ -30,15 +30,18 @@ public class App extends Application {
         FXRouter.when("customerlogin", packageStr+"customerlogin.fxml");
         FXRouter.when("customercreate", packageStr + "customercreate.fxml");
         FXRouter.when("admincontroller", packageStr + "admincontroller.fxml");
-        FXRouter.when("customerlist", packageStr + "customerlist.fxml");
+        FXRouter.when("admincheckcustomer", packageStr + "admincheckcustomer.fxml");
         FXRouter.when("storeaddproduct", packageStr + "storeaddproduct.fxml");
         FXRouter.when("adminsetting", packageStr + "adminsetting.fxml");
         FXRouter.when("customercontroller", packageStr + "customercontroller.fxml");
+        FXRouter.when("createstore", packageStr + "createstore.fxml");
         FXRouter.when("shop" , packageStr + "shop.fxml");
         FXRouter.when("customerinfo", packageStr + "customerinfo.fxml");
         FXRouter.when("marketplace", packageStr + "marketplace.fxml");
         FXRouter.when("store", packageStr + "store.fxml");
         FXRouter.when("creator", packageStr + "creator.fxml");
+        FXRouter.when("checkaddproduct", packageStr + "checkaddproduct.fxml");
+        FXRouter.when("confirnorder", packageStr + "confirmorder.fxml");
     }
 
     static void setRoot(String fxml) throws IOException {

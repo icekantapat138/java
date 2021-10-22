@@ -10,13 +10,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import ku.cs.model.User.CustomerAccount;
-import ku.cs.service.fileaccount.CustomerFileAccountDataSource;
-import ku.cs.service.fileaccount.FileAccountDataSource;
+import ku.cs.model.User.CustomerAccountList;
+import ku.cs.service.account.CustomerDataSource;
+import ku.cs.service.account.AccountDataSource;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 
 public class CustomerCreateController {
 
@@ -25,21 +30,18 @@ public class CustomerCreateController {
     @FXML private TextField usernameText;
     @FXML private PasswordField passwordField;
     @FXML private PasswordField retypepwField;
-    @FXML private FileChooser fileChooser;
     @FXML private ImageView image1;
     @FXML private TextField imageTextField;
 
-    private CustomerAccount customerAccount;
-    private CustomerFileAccountDataSource account;
-    private FileAccountDataSource accounts;
+    private AccountDataSource<CustomerAccountList> account;
+    private CustomerAccount selectedCustomer;
+    private CustomerDataSource customerDataSource;
+    private CustomerAccountList customerAccountList;
 
     @FXML
     public void initialize() {
-        customerAccount = new CustomerAccount();
-        account = new CustomerFileAccountDataSource("data", "customer.csv");
-
-        String img1 = getClass().getResource("/image/defaultprofile.jpg").toExternalForm();
-        image1.setImage(new Image(img1));
+        System.out.println(System.getProperty("user.dir"));
+        image1.setImage(new Image(getClass().getResource("/images/defaultprofile.jpg").toExternalForm()));
     }
 
     @FXML
@@ -48,31 +50,9 @@ public class CustomerCreateController {
     }
 
     @FXML
-    public void browseimageBtn(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        fileChooser = new FileChooser();
-        fileChooser.setTitle("Open File");
-
-        File file = fileChooser.showOpenDialog(stage);
-        if (file != null) {
-            Image image = new Image(file.toURI().toString());
-            image1.setImage(image);
-            imageTextField.setText(file.getAbsolutePath());
-        }
-
-
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("PNG file", "*.PNG")
-                , new FileChooser.ExtensionFilter("png file", "*.png")
-                , new FileChooser.ExtensionFilter("JPG file", "*.JPG")
-                , new FileChooser.ExtensionFilter("jpg file", "*.jpg")
-        );
-
-    }
-
-    @FXML
     void createBtn(ActionEvent event) throws IOException {
+        customerDataSource  = new CustomerDataSource("data", "customer.csv");
+        customerAccountList = customerDataSource.readData();
         if ((firstnameText.getText().equals("") || (lastnameText.getText().equals("") || (usernameText.getText().equals("") || (passwordField.getText().equals("")) || (retypepwField.getText().equals("") || (imageTextField.getText().equals(""))))))){
             Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Please Complete All Field.");
@@ -86,28 +66,39 @@ public class CustomerCreateController {
                 alert1.setContentText("Password And Re-Password Not Match.");
                 alert1.showAndWait();
             }else {
-                System.out.println("Pass");
+                if (customerAccountList.checkUsernameAccount(usernameText.getText())) {
+                    System.out.println("Pass");
+                    account = new CustomerDataSource();
+                    CustomerAccountList customerAccountList = account.readData();
+                    CustomerAccount css = new CustomerAccount(
+                            usernameText.getText(),
+                            passwordField.getText(),
+                            firstnameText.getText(),
+                            lastnameText.getText(),
+                            retypepwField.getText(),
+                            imageTextField.getText(),
+                            "Not Have Store",
+                            "00/00/0000 @00:00 a.m.",
+                            "0");
+                    selectedCustomer = css;
+                    System.out.println(css.toCsv());
 
-                CustomerAccount css = new CustomerAccount(
-                        usernameText.getText(),
-                        passwordField.getText(),
-                        firstnameText.getText(),
-                        lastnameText.getText(),
-                        retypepwField.getText(),
-                        imageTextField.getText(),
-                        "Not Have Store",
-                        "No Login Yet.");
-                System.out.println(css.toString());
+                    customerAccountList.addCustomerAccount(css);
+                    account.writeData(customerAccountList);
 
-                customerAccount.addCustomerAccount(css);
-                account.writeData(css);
 
-                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-                confirm.setTitle("CONFIRMATION");
-                confirm.setContentText("Create Account Successful.");
-                confirm.showAndWait();
-                clearAllField();
-                FXRouter.goTo("customerlogin");
+                    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                    confirm.setTitle("CONFIRMATION");
+                    confirm.setContentText("Create Account Successful.");
+                    confirm.showAndWait();
+                    clearAllField();
+                    FXRouter.goTo("customerlogin");
+                }else {
+                    Alert error = new Alert(Alert.AlertType.ERROR);
+                    error.setTitle("ERROR");
+                    error.setContentText("Username Has Use");
+                    error.showAndWait();
+                }
             }
         }
     }
@@ -118,7 +109,34 @@ public class CustomerCreateController {
         usernameText.clear();
         passwordField.clear();
         retypepwField.clear();
-        imageTextField.setText("/image/defaultprofile.jpg");
+        imageTextField.setText("");
         image1.setImage(image1.getImage());
+    }
+
+    @FXML
+    public void browseImageBtn(ActionEvent event){
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images PNG JPG", "*.png", "*.jpg", "*.jpeg"));
+        Node source = (Node) event.getSource();
+        File file = chooser.showOpenDialog(source.getScene().getWindow());
+        if (file != null) {
+            try {
+                File destDir = new File("images");
+                if (!destDir.exists()) destDir.mkdirs();
+                String[] fileSplit = file.getName().split("\\.");
+                String filename = LocalDate.now() + "_" + System.currentTimeMillis() + "."
+                        + fileSplit[fileSplit.length - 1];
+                Path target = FileSystems.getDefault().getPath(
+                        destDir.getAbsolutePath() + System.getProperty("file.separator") + filename
+                );
+                Files.copy(file.toPath(), target, StandardCopyOption.REPLACE_EXISTING);
+                // SET NEW FILE PATH TO IMAGE
+                image1.setImage(new Image(target.toUri().toString()));
+                imageTextField.setText(destDir + "/" + filename);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -21,13 +21,13 @@ public class Creator {
 
     public void initialize() {
 
-        String img1 = getClass().getResource("/image/ice.jpg").toExternalForm();
+        String img1 = getClass().getResource("/images/ice.jpg").toExternalForm();
         image1.setImage(new Image(img1));
 
-        String img2 = getClass().getResource("/image/mew.jpg").toExternalForm();
+        String img2 = getClass().getResource("/images/mew.jpg").toExternalForm();
         image2.setImage(new Image(img2));
 
-        String img3 = getClass().getResource("/image/noon.jpg").toExternalForm();
+        String img3 = getClass().getResource("/images/noon.jpg").toExternalForm();
         image3.setImage(new Image(img3));
 
     }

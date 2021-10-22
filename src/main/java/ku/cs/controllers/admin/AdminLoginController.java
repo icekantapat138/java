@@ -5,50 +5,30 @@ import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import ku.cs.model.User.Account;
+import ku.cs.model.User.AdminAccount;
+import ku.cs.model.User.AdminAccountList;
+import ku.cs.service.account.AdminDataSource;
+import ku.cs.service.account.AccountDataSource;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class AdminLoginController {
 
     @FXML private TextField usernameText;
     @FXML private PasswordField passwordField;
-    @FXML private CheckBox showpw;
 
-    private Account admin;
+    private AdminAccount admin;
+    private AccountDataSource<AdminAccountList> dataSource;
 
     @FXML
     void backBtn(ActionEvent event) throws IOException {
         FXRouter.goTo("startprogram");
     }
 
-    public boolean verifyUser() throws IOException {
-        File f = new File("C:/Administrator/project3/data/admin.csv");
-        if(!f.exists()){
-            f.createNewFile();
-        }
-        BufferedReader br = new BufferedReader(new FileReader(f));
-        Object[] Lines = br.lines().toArray();
-        int i = 0;
-        for (i = 1; i < Lines.length; i++) {
-            String line = Lines[i].toString().trim();
-            String[] data = line.split(",");
-            System.out.println(data[0]);
-            System.out.println(data[1]);
-            if ((usernameText.getText().equals(data[0])) && (passwordField.getText().equals(data[1]))) {
-                return true;
-            }else {
-                return false;
-            }
-        }
-        return false;
-    }
-
     @FXML
     void loginBtn(ActionEvent event) throws IOException{
+        dataSource = new AdminDataSource("data", "admin.csv");
+        AdminAccountList adminAccountList = dataSource.readData();
         if (usernameText.getText().equals("") || passwordField.getText().equals("")) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setTitle("Notification");
@@ -56,12 +36,11 @@ public class AdminLoginController {
             error.setHeaderText(null);
             error.showAndWait();
         } else {
-            if (verifyUser() == true){
+            if (adminAccountList.checkUserandPw(usernameText.getText(),passwordField.getText())){
                 System.out.println("เข้าสำเร็จ");
                 Dialog d = new Alert(Alert.AlertType.CONFIRMATION);
                 d.setTitle("Login Successful.");
-                d.setContentText("Login Successful" +
-                        "\r\n Welcome Admin.");
+                d.setContentText("Login Successful" + "\r\n Welcome Admin.");
                 d.showAndWait();
                 FXRouter.goTo("admincontroller");
             }
@@ -76,7 +55,7 @@ public class AdminLoginController {
 
     }
 
-    public void setAdmin(Account admin) {
+    public void setAdmin(AdminAccount admin) {
         this.admin = admin;
     }
 }

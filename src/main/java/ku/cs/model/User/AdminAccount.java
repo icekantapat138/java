@@ -1,29 +1,46 @@
 package ku.cs.model.User;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+public class AdminAccount {
 
-public class AdminAccount extends Account {
+    private String username;
+    private String password;
 
-    private String time;
-
-    public AdminAccount(String username, String password, String time) {
-        super(username, password);
-        this.time = time;
+    public AdminAccount(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public void setDate() {
-        LocalDateTime currenttime = LocalDateTime.now();
-        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd.MMM.yyyy kk:mm:ss");
-        String time = formatTime.format(currenttime);
-        this.time = time;
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean checkUsername(String username) {
+        return this.username.equals(username);
+    }
+
+    public boolean checkPassword(String password){
+        return this.password.equals(password);
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String toCsv(){
+        return username + "," + password;
     }
 
     public String toString() {
-        return "Admin" + "," +
-                getUsername() + "," +
-                getPassword() + "," +
-                time;
+        return username + "," + password;
     }
+
 
 }
